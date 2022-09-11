@@ -1,0 +1,308 @@
+//imports
+
+$white-color: #FFFFFF;
+$dark-violet: #21092F !default;
+$light-gray: #DEDDDF;
+$red-color: #FF5252;
+$primary: $dark-violet !default;
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body{
+    font-family: "Space Grotesk";
+}
+
+#home{
+    .row{
+        #col-left{
+            display: flex;
+            align-items: center;
+            #cards-container{
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 40px;
+                .card{
+                    width: 447px;
+                    height: 245px;
+                    &#card-front{
+                        background: url(./images/bg-card-front.png) no-repeat;
+                        background-size: cover;
+                        padding: 1.5em;
+                        display: grid;
+                        grid-template-rows: 1.5fr 1fr;
+                        #card-front-top{
+                            display: flex;
+                            align-items: start;
+                            #card-front-logo{
+                                background-color: $white-color;
+                                width: 3em;
+                                height: 3em;
+                                border-radius: 100px;
+                            }
+                            #card-front-logo-small{
+                                background-color: transparent;
+                                border: 1px solid $white-color;
+                                width: 1rem;
+                                height: 1rem;
+                                border-radius: 100px;
+                                margin: 1rem;
+                            }
+                        }
+                        #card-number{
+                            color: $white-color;
+                            letter-spacing: 0.18rem;
+                            font-size: 1.8rem;
+                        }
+                        #card-front-row{
+                            display: flex;
+                            justify-content: space-between;
+                            span{
+                                color: $white-color;
+                            }
+                        }
+                    }
+                    &#card-back{
+                        background: url(./images/bg-card-back.png) no-repeat;
+                        background-size: cover;
+                        position: relative;
+                        #card-back-number{
+                            width: 362px;
+                            height: 38px;
+                            position: absolute;
+                            top: 100px;
+                            left: 50%;
+                            margin-left: -181px;
+                            padding: 0.5rem;
+                            text-align: right;
+                            color: $white-color;
+                            letter-spacing: 0.2rem;
+                        }
+                    }
+                }
+            }
+        }
+        #col-right{
+            grid-template-columns: 1fr;
+            align-items: center;
+            justify-content: center;
+            form{
+                width: 40%;
+                margin: 0 auto;
+                .form-label{
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    letter-spacing: 0.2rem;
+                    font-size: 0.7rem;
+                    color: $dark-violet;
+                }
+                .form-control{
+                    font-weight: bold;
+                    font-size: 1rem;
+                    color: $dark-violet;
+                    outline: none !important;
+                    letter-spacing: 0.2rem;
+                    &::placeholder{
+                        color: $light-gray;
+                    }
+                    &:hover, &:focus{
+                        border: 1px solid $dark-violet !important;
+                        outline: none !important;
+                        box-shadow: none;
+                    }
+                    &.error-input{
+                        border: 1px solid $red-color !important;
+                    }
+                }
+                .form-text{
+                    font-weight: bold;
+                    font-size: 0.7rem;
+                    color: $red-color;
+                }
+                button[type="submit"]{
+                    font-size: 0.9rem;
+                }
+            }
+            #success-msg{
+                width: 40%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+                svg{
+                    margin: 0 auto 10px;
+                }
+                h1{
+                    color: $dark-violet;
+                    margin: 0;
+                }
+                p{
+                    color: #666666;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(lg){
+    html,body,#app{
+        width: 100%;
+        height: 100%;
+    }
+
+    #home{
+        height: 100%;
+        .row{
+            height: 100%;
+            #col-left{
+                height: 100%;
+                background: url(./images/bg-main-desktop.png) center left no-repeat;
+                background-size: cover;
+                #cards-container{
+                    justify-items: end;
+                    .card{
+                        &#card-front{
+                            margin-right: -5em;
+                            #card-front-top{
+                                #card-front-logo{
+                                    @media (max-width: 1200px) {
+                                        width: 2.5em;
+                                        height: 2.5em;
+                                    }
+                                }
+                                #card-front-logo-small{
+                                    @media (max-width: 1200px) {
+                                        width: 0.9em;
+                                        height: 0.9em;
+                                    }
+                                }
+                            }
+                            #card-number{
+                                @media (max-width: 1200px) {
+                                    font-size: 1.45rem;
+                                }
+                            }
+                            #card-front-row{
+                                span{
+                                    @media (max-width: 1200px) {
+                                        font-size: 0.9rem;
+                                    }
+                                }
+                            }
+                        }
+                        &#card-back{
+                            margin-right: -9em;
+
+                            #card-back-number{
+                                @media (max-width: 1200px) {
+                                    width: 305px;
+                                    height: 32px;
+                                    top: 86px;
+                                    margin-left: -152px;
+                                    padding: 0.3rem;
+                                }
+                            }
+                        }
+
+                        @media (max-width: 1200px) {
+                            width: 379px;
+                            height: 208px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(lg){
+    #home{
+        .row{
+            #col-left{
+                background: url(./images/bg-main-mobile.png) center center no-repeat;
+                background-size: cover;
+                #cards-container{
+                    justify-items: end;
+                    position: relative;
+                    padding: 3em;
+                    .card{
+                        &#card-front{
+                            position: absolute;
+                            z-index: 1000;
+                            margin: 206px 0 0 3em;
+                            left: 0;
+                            top:0;
+                            @media (max-width: 570px) {
+                                background-size: 100% auto;
+                                margin-top: 140px;
+                                margin-left: 1em;
+                            }
+                            #card-front-top{
+                                #card-front-logo{
+                                    @media (max-width: 570px) {
+                                        width: 2em;
+                                        height: 2em;
+                                    }
+                                }
+                                #card-front-logo-small{
+                                    @media (max-width: 570px) {
+                                        width: 0.8rem;
+                                        height: 0.8rem;
+                                        margin: 0.6rem;
+                                    }
+                                }
+                            }
+                            #card-number{
+                                @media (max-width: 570px) {
+                                    font-size: 1.1rem;
+                                }
+                            }
+                            #card-front-row{
+                                span{
+                                    @media (max-width: 570px) {
+                                        font-size: 0.8rem;
+                                    }
+                                }
+                            }
+                        }
+                        &#card-back{
+                            #card-back-number{
+                                @media (max-width: 570px) {
+                                    width: 236px;
+                                    height: 27px;
+                                    top: 64px;
+                                    margin-left: -118px;
+                                    padding: 0.09rem;
+                                }
+                            }
+                            @media (max-width: 570px) {
+                                background-size: 100% auto;
+                            }
+                        }
+                        @media (max-width: 570px) {
+                            width: 291px;
+                            height: 163px;
+                        }
+                    }
+                    @media (max-width: 570px) {
+                        padding: 3em 1em;
+                    }
+                }
+            }
+            #col-right{
+                padding-top: 9em;
+                @media (max-width: 570px) {
+                    padding-top: 5em;
+                }
+                form{
+                    width: 80%;
+                }
+                #success-msg{
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
